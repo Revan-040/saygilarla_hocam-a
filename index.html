@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8 Mart Təbriki 💐</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.15), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0;
+      animation: bloom 4s ease-in-out forwards;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: scale(0.2) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.4) rotate(20deg);
+        opacity: 1;
+      }
+    }
+
+    .message-box {
+      position: relative;
+      z-index: 10;
+      width: min(90%, 750px);
+      text-align: center;
+      padding: 30px 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: all 1.2s ease;
+    }
+
+    .message-box.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      color: #b30059;
+      margin-bottom: 16px;
+      text-shadow: 1px 1px 6px rgba(255,255,255,0.5);
+    }
+
+    p {
+      font-size: clamp(18px, 2.7vw, 26px);
+      line-height: 1.7;
+      color: #5a1846;
+      font-weight: 500;
+    }
+
+    .heart {
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      color: rgba(90, 24, 70, 0.8);
+      font-size: 14px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+<div class="message-box" id="messageBox">
+  <h1>8 Mart – Beynəlxalq Qadınlar Günü təbriki 💐</h1>
+  <p>
+    Bəzi şeylər sevilir çünki onlar dəyərlidir, bəzi şeylər dəyərlidir çünki onlar sevilir. Qadınlar hər ikisinə layiqdir. 8 Mart bayramın mübarək hocammm! <span class="heart"></span>
+  </p>
+
+  <p style="margin-top: 18px; font-size: 20px; color: #7a1c52; font-weight: 600;">
+    Hörmətlə, Rəvan. 
+  </p>
+</div>
+
+
+  <script>
+    const flowers = ["🌹", "🌷", "🌸", "💐", "🌺", "🌼"];
+    const totalFlowers = 45;
+
+    function createFlower(i) {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.top = Math.random() * 100 + "vh";
+      flower.style.fontSize = (24 + Math.random() * 28) + "px";
+      flower.style.animationDelay = (i * 0.15) + "s";
+
+      document.body.appendChild(flower);
+    }
+
+    for (let i = 0; i < totalFlowers; i++) {
+      createFlower(i);
+    }
+
+    setTimeout(() => {
+      document.getElementById("messageBox").classList.add("show");
+      document.querySelector(".hint").style.opacity = "0";
+    }, 7500);
+  </script>
+</body>
+</html>
